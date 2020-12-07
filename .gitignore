@@ -1,0 +1,7 @@
+target/
+debug/
+cargo.lock
+**/*.rs.bk
+
+.idea/
+**/*.sqlite

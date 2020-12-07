@@ -1,0 +1,10 @@
+[package]
+name = "unnamed-db"
+version = "0.1.0"
+authors = ["Zacchary Dempsey-Plante <zacc@ztdp.ca>"]
+edition = "2018"
+
+[dependencies]
+lazy_static = "1.4"
+rocket = "0.4"
+sqlite = "0.25"
