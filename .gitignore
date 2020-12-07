@@ -1,6 +1,6 @@
 target/
 debug/
-cargo.lock
+Cargo.lock
 **/*.rs.bk
 
 .idea/
