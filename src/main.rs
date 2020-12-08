@@ -5,13 +5,7 @@ extern crate lazy_static;
 #[macro_use]
 extern crate rocket;
 
-use sqlite;
-use std::sync::Mutex;
-
-lazy_static! {
-	static ref CONN: Mutex<sqlite::Connection> =
-		{ Mutex::new(sqlite::open("./db.sqlite").unwrap()) };
-}
+mod db;
 
 #[get("/")]
 fn index() -> &'static str {
@@ -19,6 +13,6 @@ fn index() -> &'static str {
 }
 
 fn main() {
-	CONN.lock().unwrap();
+	db::init_if_necessary();
 	rocket::ignite().mount("/", routes![index]).launch();
 }
