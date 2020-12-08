@@ -1,0 +1,17 @@
+html, body {
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	z-index: -999;
+}
+
+.clear {
+	clear: both;
+}
+
+nobr {
+	white-space: nowrap;
+}

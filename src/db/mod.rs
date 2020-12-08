@@ -3,11 +3,10 @@ mod build_db;
 use sqlite;
 use std::sync::Mutex;
 
-const CHECK_TABLE: &str = "systems";
+const CHECK_TABLE: &str = "systems"; // A table that will always exist in the DB.
 
 lazy_static! {
-	pub static ref CONN: Mutex<sqlite::Connection> =
-		Mutex::new(sqlite::open("./db.sqlite").unwrap());
+	pub static ref CONN: Mutex<sqlite::Connection> = Mutex::new(sqlite::open("db.sqlite").unwrap());
 }
 
 pub fn init_if_necessary() {
