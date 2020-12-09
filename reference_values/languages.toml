@@ -1,0 +1,17 @@
+data = [
+	'en',
+	'ja',
+	'fr',
+	'de',
+	'es',
+	'it',
+	'nl',
+	'pt',
+	'sv',
+	'no',
+	'da',
+	'fi',
+	'zh',
+	'ko',
+	'pl'
+]

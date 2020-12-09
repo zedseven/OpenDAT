@@ -1,0 +1,13 @@
+data = [
+	'Add-On',
+	'Application',
+	'Audio',
+	'Bonus Disc',
+	'Coverdisc',
+	'Demo',
+	'Educational',
+	'Game',
+	'Multimedia',
+	'Press Kit',
+	'Video'
+]

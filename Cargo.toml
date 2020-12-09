@@ -8,4 +8,6 @@ edition = "2018"
 lazy_static = "1.4"
 rocket = "0.4"
 rocket_contrib = "0.4"
+serde = { version = "1.0", features = ["derive"] }
 sqlite = "0.25"
+toml = "0.5"
