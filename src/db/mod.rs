@@ -1,29 +1,16 @@
-mod build_db;
+pub mod type_access;
 
-use sqlite;
-use std::sync::Mutex;
+use rocket::Rocket;
+use type_access::DbConn;
 
-const CHECK_TABLE: &str = "systems"; // A table that will always exist in the DB.
+diesel_migrations::embed_migrations!("migrations");
 
-lazy_static! {
-	pub static ref CONN: Mutex<sqlite::Connection> = Mutex::new(sqlite::open("db.sqlite").unwrap());
-}
+pub fn init(rocket: Rocket) -> Result<Rocket, Rocket> {
+	let conn: DbConn = DbConn::get_one(&rocket)
+		.expect("Should be able to get the database connection during basic initialization.");
 
-pub fn init_if_necessary() {
-	let conn = CONN.lock().unwrap();
-	match conn.prepare(format!(
-		"SELECT \
-				name \
-			FROM '{}'",
-		CHECK_TABLE
-	)) {
-		Ok(_) => {
-			println!("DB already exists. No initialization necessary.");
-			return;
-		}
-		_ => {
-			println!("DB doesn't exist yet - initializing now.");
-			build_db::init(&conn);
-		}
-	};
+	embedded_migrations::run_with_output(&conn.0, &mut std::io::stdout())
+		.expect("Something went wrong while running embedded database migrations.");
+
+	Ok(rocket)
 }

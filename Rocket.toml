@@ -1,0 +1,5 @@
+[global]
+template_dir = "interface/"
+
+    [global.databases]
+    sqlite_db = { url = "db.sqlite" }

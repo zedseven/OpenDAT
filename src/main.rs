@@ -1,25 +1,15 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 
 #[macro_use]
-extern crate lazy_static;
+extern crate diesel_migrations;
 #[macro_use]
 extern crate rocket;
+#[macro_use]
+extern crate rocket_contrib;
 
 mod db;
-
-use rocket_contrib::serve::StaticFiles;
-
-#[get("/")]
-fn index() -> &'static str {
-	"Hello, world!"
-}
+mod web;
 
 fn main() {
-	db::init_if_necessary();
-	rocket::ignite()
-		.mount("/", routes![index])
-		.mount("/css", StaticFiles::from("static/css"))
-		.mount("/js", StaticFiles::from("static/js"))
-		.mount("/img", StaticFiles::from("static/img"))
-		.launch();
+	web::launchpad().launch();
 }

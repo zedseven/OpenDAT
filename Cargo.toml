@@ -5,9 +5,10 @@ authors = ["Zacchary Dempsey-Plante <zacc@ztdp.ca>"]
 edition = "2018"
 
 [dependencies]
-lazy_static = "1.4"
+diesel = "1.4"
+diesel_migrations = "1.4"
 rocket = "0.4"
-rocket_contrib = "0.4"
+rocket_contrib = { version = "0.4", features = ["diesel_sqlite_pool", "tera_templates"] }
+rusqlite = { version = "0.14", features = ["bundled"] } # To have sqlite3.lib be compiled automatically
 serde = { version = "1.0", features = ["derive"] }
-sqlite = "0.25"
 toml = "0.5"
