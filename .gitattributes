@@ -1,1 +1,5 @@
-*.sql linguist-detectable=true
+*.html.tera      linguist-language=html
+*.css.tera       linguist-language=css
+*.js.tera        linguist-language=javascript
+*.sql            linguist-detectable=true
+src/db/schema.rs linguist-generated=true

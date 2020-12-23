@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en' prefix='og: https://ogp.me/ns#'>
+    <head>
+        <title>Welcome to OpenDAT!</title>
+        
+        <!-- *** Miscellaneous *** -->
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <meta name='theme-color' content='#314EC5'>
+        <meta name='author' content='OpenDAT'>
+        
+        <!-- *** Stylesheets *** -->
+        <link rel='stylesheet' href='/css/main.css' type='text/css'>
+    </head>
+    <body>
+        <h1>The existing users are as follows:</h1>
+        <table>
+            <tr><th>Username</th><th>Email Address</th><th>Disabled</th></tr>
+            {% for user in user_list %}
+                <tr><td>{{user.name}}</td><td>{{user.email}}</td><td><input type='checkbox' value='disabled'{% if user.disabled %} checked='checked'{% endif %} /></td></tr>
+            {% endfor %}
+        </table>
+        <form method='post'>
+            <label for='user_name'>Username: </label><input id='user_name' name='user_name' type='text' placeholder='User name' minlength='1' maxlength='32' /><br />
+            <label for='password'>Password: </label><input id='password' name='password' type='password' placeholder='Password' minlength='6' maxlength='1024' /><br />
+            <input type='submit' value='Create New User' />
+        </form>
+    </body>
+</html>

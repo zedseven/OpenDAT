@@ -1,7 +1,11 @@
-pub mod type_access;
+pub mod models;
+pub mod schema;
 
 use rocket::Rocket;
-use type_access::DbConn;
+use rocket_contrib::databases::diesel;
+
+#[database("sqlite_db")]
+pub struct DbConn(pub(crate) diesel::SqliteConnection);
 
 diesel_migrations::embed_migrations!("migrations");
 

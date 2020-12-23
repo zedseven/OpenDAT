@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='en' prefix='og: https://ogp.me/ns#'>
+    <head>
+        <title>Login | OpenDAT</title>
+        
+        <!-- *** Miscellaneous *** -->
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <meta name='theme-color' content='#314EC5'>
+        <meta name='author' content='OpenDAT'>
+        
+        <!-- *** Stylesheets *** -->
+        <link rel='stylesheet' href='/css/main.css' type='text/css'>
+    </head>
+    <body>
+        <h1>Login:</h1>
+        {% if flash_message %}
+            <p>{{flash_message}}</p>
+        {% endif %}
+        <form method='post'>
+            <label for='user_name'>Username: </label><input id='user_name' name='user_name' type='text' placeholder='User name' minlength='1' maxlength='32' /><br />
+            <label for='password'>Password: </label><input id='password' name='password' type='password' placeholder='Password' minlength='6' maxlength='1024' /><br />
+            <input type='submit' value='Login' />
+        </form>
+    </body>
+</html>
