@@ -1,4 +1,3 @@
-use super::EmptyContext;
 use super::Routable;
 use crate::db::{self, models, DbConn};
 use crate::secu::{self, Session};
@@ -82,11 +81,7 @@ fn get_login(session: Session, flash: Option<FlashMessage>) -> Result<Template, 
 		Ok(Template::render(
 			"login",
 			&LoginContext {
-				flash_message: flash
-					.map(|msg| msg.msg())
-					.unwrap_or_default()
-					.parse()
-					.unwrap(),
+				flash_message: flash.map(|msg| String::from(msg.msg())).unwrap_or_default(),
 			},
 		))
 	} else {
